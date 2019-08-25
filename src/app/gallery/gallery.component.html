@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="animacija" [@textAnimation]>
+  <h1 class="my-4">Putovanje sa Makalom, iks de<br/>
+    <small>"Putnik bez moći zapažanja je kao ptica bez krila."</small>
+  </h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let photos of gallery">
+        <div class="card h-100" [@photosAnimation]>
+            <a href="{{photos.slike.src}}"><img class="card-img-top" src='{{photos.slike.src}}' alt='{{photos.slike.alt}}' /></a>
+          <div class="card-body">
+              <h4 class="card-title">
+                {{photos.naziv}}
+              </h4>
+              <p class="card-text">{{photos.opis}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

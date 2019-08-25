@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="my-4">Kontakt</h1>
+  <h5>Ukoliko imate bilo kakve nedoumice, pisite nam!</h5>
+    <form #f="ngForm" [attr.method]="metod" [attr.action]="action" (ngSubmit)="submit(f)">
+  <div class="form-group">
+      <label for="ime">Ime:</label>
+      <input required minlength="3" maxlength="10" pattern="[A-ZČĆŽŠĐ][a-zčćžšđ]+" ngModel name="ime" #ime="ngModel" (change)="log(ime)" id="ime" type="text" class="form-control"/>
+      <div class="alert alert-danger" *ngIf="ime.touched && !ime.valid">
+        <div *ngIf="ime.errors.required">Polje mora da bude popunjeno.</div>
+        <div *ngIf="ime.errors.minlength">Ime ne može da sadrži manje od 3 slova.</div>
+        <div *ngIf="ime.errors.pattern">Polje nije pravilno popunjeno!</div>
+      </div>
+  </div>
+  <div class="form-group">
+        <label for="prezime">Prezime:</label>
+        <input required minlength="3" maxlength="10" pattern="[A-ZČĆŽŠĐ][a-zčćžšđ]+" ngModel name="prezime" #prezime="ngModel" (change)="log(prezime)" id="prezime" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf="prezime.touched && !prezime.valid">
+          <div *ngIf="prezime.errors.required">Polje mora da bude popunjeno.</div>
+          <div *ngIf="prezime.errors.minlength">Prezime ne može da sadrži manje od 3 slova.</div>
+          <div *ngIf="prezime.errors.pattern">Polje nije pravilno popunjeno!</div>
+        </div>
+  </div>
+  <div class="form-group">
+        <label for="mail">E-mail adresa:</label>
+        <input required minlength="8" maxlength="30" pattern="[\w\d\.\_]+@[a-z\.]+\.[a-z]{2,3}" ngModel name="mail" #mail="ngModel" (change)="log(mail)" id="mail" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf="mail.touched && !mail.valid">
+          <div *ngIf="mail.errors.required">Polje mora da bude popunjeno.</div>
+          <div *ngIf="mail.errors.minlength">E-mail ne može da sadrži manje od 8 slova.</div>
+          <div *ngIf="mail.errors.pattern">Polje nije pravilno popunjeno!</div>
+        </div>
+</div>
+  <div class="form-group">
+        <label for="poruka">Poruka:</label>
+        <textarea required minlength="15" maxlength="140" ngModel name="poruka" #poruka="ngModel" (change)="log(poruka)" id="poruka" type="text-box" [attr.rows]="rows" [attr.cols]="cols" class="form-control"></textarea>
+        <div class="alert alert-danger" *ngIf="poruka.touched && !poruka.valid">
+          <div *ngIf="poruka.errors.required">Polje mora da bude popunjeno.</div>
+          <div *ngIf="poruka.errors.minlength">Poruka ne može da sadrži manje od 15 karaktera.</div>
+        </div>
+  </div>
+<button class="btn btn-primary" [disabled]="!f.valid">Posalji poruku</button>
+</form>
+<br/>
+</div>
